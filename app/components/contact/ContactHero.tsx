@@ -17,24 +17,32 @@ const contactHighlights: ContactHighlight[] = [
 
 export default function ContactHero() {
   return (
-    <section className="relative bg-[#0F0F0F] min-h-[90vh] flex items-center justify-center px-6 md:px-12 lg:px-24 py-24 overflow-hidden">
-      
-      {/* Decorative Background */}
-      <div className="absolute inset-0 opacity-5">
+    <section
+      className="relative min-h-[90vh] flex items-center justify-center px-6 md:px-12 lg:px-24 py-24 overflow-hidden"
+      style={{
+        backgroundImage: `url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/70" />
+
+      {/* Decorative Background Blurs */}
+      <div className="absolute inset-0 opacity-20">
         <div className="absolute top-24 left-12 w-72 h-72 bg-[#C9A14A] rounded-full blur-[120px]" />
         <div className="absolute bottom-24 right-12 w-96 h-96 bg-[#C9A14A] rounded-full blur-[140px]" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto text-center lg:mt-20">
-        
         {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 leading-tight"
+          className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 leading-tight text-white"
         >
-          <span className="text-white">Get in </span>
+          <span>Get in </span>
           <span className="text-[#C9A14A]">Touch</span>
         </motion.h1>
 
@@ -43,7 +51,7 @@ export default function ContactHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="text-white/70 text-lg md:text-xl lg:text-2xl font-light max-w-3xl mx-auto mb-12 leading-relaxed"
+          className="text-white/80 text-lg md:text-xl lg:text-2xl font-light max-w-3xl mx-auto mb-12 leading-relaxed"
         >
           Let’s start planning something extraordinary. Reach out to discuss your
           wedding, celebration, or corporate event.
@@ -84,9 +92,6 @@ export default function ContactHero() {
             );
           })}
         </motion.div>
-
-        
-
       </div>
     </section>
   );

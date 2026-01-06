@@ -7,6 +7,7 @@ import Testimonials from '../components/home/Testimonials'
 import TeamOrClients from '../components/home/OurClients'
 import FAQ from '../components/home/FAQ'
 import ServicesPage from '../components/home/ServicesPage'
+import MainGallery from '../components/home/MainGallery'
 
 function HomePage() {
   return (
@@ -16,6 +17,7 @@ function HomePage() {
       <ServicesPreview/>
       <ServicesPage/>
       <WhyChooseUs/>
+      <MainGallery/>
       <Testimonials/>
       <TeamOrClients/>
       <FAQ/>
