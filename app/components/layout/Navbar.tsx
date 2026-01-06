@@ -261,12 +261,15 @@ export default function Navbar(): JSX.Element {
 
       {/* Mobile CTA */}
       <div className="border-t border-[#4E3814]/30 pt-6 px-6">
-        <button className="group relative w-full py-4 bg-transparent border border-[#C9A14A] rounded-sm overflow-hidden transition-all duration-300 hover:text-[#0F0F0F]">
+      <Link href="/contact">
+
+        <button className="group cursor-pointer relative w-full py-4 bg-transparent border border-[#C9A14A] rounded-sm overflow-hidden transition-all duration-300 hover:text-[#0F0F0F]">
           <span className="relative z-10 text-white tracking-wider text-sm uppercase font-light">
             Plan Your Event
           </span>
           <div className="absolute inset-0 bg-[#C9A14A] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
         </button>
+      </Link>
       </div>
     </motion.div>
   )}

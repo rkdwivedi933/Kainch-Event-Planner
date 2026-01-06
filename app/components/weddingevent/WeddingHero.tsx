@@ -84,8 +84,7 @@ export default function WeddingHero() {
           className="text-white/70 text-lg md:text-xl max-w-3xl mx-auto mb-12"
         >
           We design soulful weddings filled with love, traditions, elegance
-          and unforgettable celebrations — from intimate rituals to grand
-          destination weddings.
+          and unforgettable celebrations.
         </motion.p>
 
         {/* Divider */}
@@ -93,7 +92,7 @@ export default function WeddingHero() {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="w-32 h-px bg-linear-to-r from-transparent via-[#C9A14A] to-transparent mx-auto mb-12"
+          className="w-32 h-px bg-linear-to-r from-transparent via-[#C9A14A] to-transparent mx-auto mb-8"
         />
 
         {/* Highlights */}

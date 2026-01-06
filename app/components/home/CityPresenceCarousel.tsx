@@ -19,10 +19,24 @@ const cities: City[] = [
 
 export default function CityPresenceCarousel() {
   const [index, setIndex] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(3);
 
   const total = cities.length;
 
-  /** AUTO SCROLL FIX */
+  /** RESPONSIVE CARD COUNT */
+  useEffect(() => {
+    const updateCards = () => {
+      if (window.innerWidth < 640) setVisibleCards(1);
+      else if (window.innerWidth < 1024) setVisibleCards(2);
+      else setVisibleCards(3);
+    };
+
+    updateCards();
+    window.addEventListener('resize', updateCards);
+    return () => window.removeEventListener('resize', updateCards);
+  }, []);
+
+  /** AUTO SCROLL */
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % total);
@@ -31,39 +45,37 @@ export default function CityPresenceCarousel() {
     return () => clearInterval(interval);
   }, [total]);
 
+  const slideWidth = 100 / visibleCards;
+
   return (
     <section className="bg-[#0F0F0F] py-20">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-2">
 
         {/* Header */}
         <div className="mb-14 text-center">
           <h2 className="mb-4 font-serif text-4xl font-light tracking-wide text-[#C9A14A] sm:text-5xl lg:text-6xl">
             Our Presence
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
-            Cities We Serve
-          </p>
-          <div className="mx-auto mt-8 h-px w-24 bg-linear-to-r from-transparent via-[#C9A14A] to-transparent" />
+          <p className="mt-6 text-lg text-gray-400">Cities We Serve</p>
         </div>
 
         {/* Carousel */}
         <div className="relative overflow-hidden">
           <motion.div
             className="flex"
-            animate={{ x: `-${index * 33.3333}%` }}
+            animate={{ x: `-${index * slideWidth}%` }}
             transition={{ duration: 0.9, ease: 'easeInOut' }}
           >
-            {/* duplicate list for seamless loop */}
             {[...cities, ...cities].map((city, i) => (
               <div
                 key={`${city.id}-${i}`}
-                className="w-full shrink-0 px-4 sm:w-1/2 lg:w-1/3 "
+                className="w-full shrink-0 px-4 sm:w-1/2 lg:w-1/3"
               >
                 <motion.div
                   whileHover={{ y: -8 }}
-                  className="overflow-hidden rounded-2xl  shadow-lg border-2 border-[#4E3814]"
+                  className="overflow-hidden rounded-2xl border-2 border-[#4E3814]"
                 >
-                  <div className="relative aspect-4/2 overflow-hidden ">
+                  <div className="relative aspect-4/2 overflow-hidden">
                     <img
                       src={city.image}
                       alt={city.name}
@@ -72,8 +84,8 @@ export default function CityPresenceCarousel() {
                     <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
                   </div>
 
-                  <div className="p-6 text-center ">
-                    <h3 className="text-lg font-medium tracking-wide  text-white">
+                  <div className="p-6 text-center">
+                    <h3 className="text-lg font-medium text-white">
                       {city.name}
                     </h3>
                   </div>
@@ -82,18 +94,6 @@ export default function CityPresenceCarousel() {
             ))}
           </motion.div>
         </div>
-        {/* Bottom Decorative Element */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 1 }}
-          className="mt-24 flex items-center justify-center gap-4"
-        >
-          <div className="h-px w-32 bg-linear-to-r from-transparent to-[#4E3814]" />
-          <div className="h-2 w-2 rotate-45 border border-[#C9A14A]" />
-          <div className="h-px w-32 bg-linear-to-l from-transparent to-[#4E3814]" />
-        </motion.div>
       </div>
     </section>
   );

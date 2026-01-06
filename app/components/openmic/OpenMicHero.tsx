@@ -82,9 +82,7 @@ export default function OpenMicHero() {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="text-white/70 text-lg md:text-xl max-w-3xl mx-auto mb-12"
         >
-          A stage for raw talent, real stories, and pure expression. Our open mic
-          nights bring together singers, poets, comedians, and creators to
-          share moments that truly connect.
+          A stage for raw talent, real stories, and pure expression. 
         </motion.p>
 
         {/* Divider */}
@@ -92,7 +90,7 @@ export default function OpenMicHero() {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="w-32 h-px bg-linear-to-r from-transparent via-[#C9A14A] to-transparent mx-auto mb-12"
+          className="w-32 h-px bg-linear-to-r from-transparent via-[#C9A14A] to-transparent mx-auto mb-8"
         />
 
         {/* Highlights */}
