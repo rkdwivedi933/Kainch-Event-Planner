@@ -32,9 +32,9 @@ interface SocialLink {
 
 const quickLinks: QuickLink[] = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About Us' },
+  { href: '/aboutus', label: 'About Us' },
   { href: '/services', label: 'Services' },
-  { href: '/work', label: 'Work Gallery' },
+  { href: '/gallery', label: 'Work Gallery' },
   { href: '/contact', label: 'Contact Us' },
 ];
 
@@ -77,6 +77,13 @@ const socialLinks: SocialLink[] = [
     label: 'LinkedIn',
   },
 ];
+const services = [
+    { href: "/services/wedding", label: "Wedding Event" },
+      { href: "/services/live-concert", label: "Live Concert" },
+      { href: "/services/open-mic", label: "Open Mic" },
+      { href: "/services/corporate", label: "Corporate Event" },
+      { href: "/services/exhibition", label: "Exhibition" },
+];
 
 const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -109,99 +116,121 @@ export default function Footer(): JSX.Element {
         className="mx-auto h-px w-full bg-linear-to-r from-transparent via-[#C9A14A] to-transparent"
       />
 
-      {/* Main Footer Content */}
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={staggerContainerVariants}
-          className="grid gap-12 md:grid-cols-2 lg:grid-cols-3"
-        >
-          {/* Column 1 - Brand */}
-          <motion.div variants={fadeUpVariants} className="space-y-4">
-            <h2 className="font-serif text-2xl font-light tracking-wide text-[#C9A14A] lg:text-3xl">
-              Kainch Event Planner
-            </h2>
-            <p className="max-w-sm text-base leading-relaxed text-gray-400">
-              Crafting unforgettable luxury weddings & premium events with
-              elegance, creativity, and impeccable attention to detail.
-            </p>
+    {/* Main Footer Content */}
+<div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
+  <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: '-50px' }}
+    variants={staggerContainerVariants}
+    className="grid gap-12 md:grid-cols-2 lg:grid-cols-4" // 4 columns on large screens
+  >
+    {/* Column 1 - Brand */}
+    <motion.div variants={fadeUpVariants} className="space-y-4">
+      <h2 className="font-serif text-2xl font-light tracking-wide text-[#C9A14A] lg:text-3xl">
+        Kainch Event Planner
+      </h2>
+      <p className="max-w-sm text-base leading-relaxed text-gray-400">
+        Crafting unforgettable luxury weddings & premium events with
+        elegance, creativity, and impeccable attention to detail.
+      </p>
 
-            {/* Social Icons */}
-            <div className="flex gap-4 pt-2">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="rounded-sm bg-[#4E3814]/20 p-2 text-[#C9A14A] transition-all duration-300 hover:bg-[#4E3814]/40 hover:scale-110"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-
-            <div className="h-px w-16 bg-linear-to-r from-[#C9A14A] to-transparent" />
-          </motion.div>
-
-          {/* Column 2 - Quick Links */}
-          <motion.div variants={fadeUpVariants} className="space-y-4">
-            <h3 className="font-serif text-xl font-light tracking-wide lg:text-2xl">
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="group relative inline-block text-base text-gray-400 transition-colors duration-300 hover:text-[#C9A14A]"
-                  >
-                    {link.label}
-                    <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#C9A14A] transition-all duration-300 group-hover:w-full" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Column 3 - Contact Info */}
-          <motion.div variants={fadeUpVariants} className="space-y-4">
-            <h3 className="font-serif text-xl font-light tracking-wide lg:text-2xl">
-              Get In Touch
-            </h3>
-            <ul className="space-y-4">
-              {contactInfo.map((item, index) => {
-                const IconComponent = item.icon;
-
-                return (
-                  <li key={index}>
-                    {item.href ? (
-                      <a href={item.href} className="group flex items-center gap-3">
-                        <div className="rounded-sm bg-[#4E3814]/20 p-2.5 group-hover:bg-[#4E3814]/40">
-                          <IconComponent className="h-5 w-5 text-[#C9A14A]" />
-                        </div>
-                        <span className="text-gray-400 group-hover:text-[#C9A14A]">
-                          {item.label}
-                        </span>
-                      </a>
-                    ) : (
-                      <div className="flex items-center gap-3">
-                        <div className="rounded-sm bg-[#4E3814]/20 p-2.5">
-                          <IconComponent className="h-5 w-5 text-[#C9A14A]" />
-                        </div>
-                        <span className="text-gray-400">{item.label}</span>
-                      </div>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </motion.div>
-        </motion.div>
+      {/* Social Icons */}
+      <div className="flex gap-4 pt-2">
+        {socialLinks.map((social) => (
+          <a
+            key={social.label}
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.label}
+            className="rounded-sm bg-[#4E3814]/20 p-2 text-[#C9A14A] transition-all duration-300 hover:bg-[#4E3814]/40 hover:scale-110"
+          >
+            {social.icon}
+          </a>
+        ))}
       </div>
+
+      <div className="h-px w-16 bg-linear-to-r from-[#C9A14A] to-transparent" />
+    </motion.div>
+
+    {/* Column 2 - Quick Links */}
+    <motion.div variants={fadeUpVariants} className="space-y-4">
+      <h3 className="font-serif text-xl font-light tracking-wide lg:text-2xl">
+        Quick Links
+      </h3>
+      <ul className="space-y-3">
+        {quickLinks.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className="group relative inline-block text-base text-gray-400 transition-colors duration-300 hover:text-[#C9A14A]"
+            >
+              {link.label}
+              <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#C9A14A] transition-all duration-300 group-hover:w-full" />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
+
+    {/* Column 3 - Services */}
+    <motion.div variants={fadeUpVariants} className="space-y-4">
+      <h3 className="font-serif text-xl font-light tracking-wide lg:text-2xl">
+        Our Services
+      </h3>
+      <ul className="space-y-3">
+        {services.map((service) => (
+          <li key={service.href}>
+            <Link
+              href={service.href}
+              className="group relative inline-block text-base text-gray-400 transition-colors duration-300 hover:text-[#C9A14A]"
+            >
+              {service.label}
+              <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#C9A14A] transition-all duration-300 group-hover:w-full" />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
+
+    {/* Column 4 - Contact Info */}
+    <motion.div variants={fadeUpVariants} className="space-y-4">
+      <h3 className="font-serif text-xl font-light tracking-wide lg:text-2xl">
+        Get In Touch
+      </h3>
+      <ul className="space-y-4">
+        {contactInfo.map((item, index) => {
+          const IconComponent = item.icon;
+
+          return (
+            <li key={index}>
+              {item.href ? (
+                <a href={item.href} className="group flex items-center gap-3">
+                  <div className="rounded-sm bg-[#4E3814]/20 p-2.5 group-hover:bg-[#4E3814]/40">
+                    <IconComponent className="h-5 w-5 text-[#C9A14A]" />
+                  </div>
+                  <span className="text-gray-400 group-hover:text-[#C9A14A]">
+                    {item.label}
+                  </span>
+                </a>
+              ) : (
+                <div className="flex items-center gap-3">
+                  <div className="rounded-sm bg-[#4E3814]/20 p-2.5">
+                    <IconComponent className="h-5 w-5 text-[#C9A14A]" />
+                  </div>
+                  <span className="text-gray-400">{item.label}</span>
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </motion.div>
+  </motion.div>
+</div>
+
+
 
       {/* Bottom Bar */}
       <div className="border-t border-[#4E3814]/30">
